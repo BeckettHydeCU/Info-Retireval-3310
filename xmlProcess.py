@@ -5,8 +5,9 @@ import xml.etree.ElementTree as ET
 #https://stackoverflow.com/questions/17530471/get-all-text-from-an-xml-document
 #https://stackoverflow.com/questions/21074361/how-to-recursively-iterate-over-xml-tags-in-python-using-elementtree
 
-#TO USE: 
-# activate virtualenviroemnt using: '. venv/bin/activate'
+#TO USE:
+# to instlal virtual env: python3 -m pip install --user virtualenv
+# activate virtualenviroemnt using: 'source . venv/bin/activate'
 
 
 print("Begin Parsing:")
