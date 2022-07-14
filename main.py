@@ -1,12 +1,16 @@
 import scrapy
 
-class BlogSpider(scrapy.Spider):
-    name = 'blogspider'
-    start_urls = ['https://www.colorado.edu/']
+class SearchSpider(scrapy.Spider):
+    name = "search"
+
+    def start_requests(self):
+        start_urls = ['https://www.colorado.edu/']
+        for url in start_urls:
+            yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        for title in response.css('.oxy-post-title'):
-            yield {'title': title.css('::text').get()}
-
-        for next_page in response.css('a.next'):
-            yield response.follow(next_page, self.parse)
+        page = response.url.split("/")[-2]
+        filename = f'quotes-{page}.html'
+        with open(filename, 'wb') as f:
+            f.write(response.body)
+        self.log(f'Saved file {filename}')
