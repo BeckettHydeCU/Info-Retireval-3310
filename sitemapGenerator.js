@@ -9,13 +9,19 @@ const SitemapGenerator = require('sitemap-generator');
 
 
 // create generator
-const generator = SitemapGenerator('http://karpathy.github.io/', {
+const generator = SitemapGenerator('https://www.colorado.edu/', {
+  maxDepth: 2,
+  maxEntriesPerFile: 1000,
   stripQuerystring: false
 });
 
 // register event listeners
 generator.on('done', () => {
   // sitemaps created
+});
+
+generator.on('error', (error) => {
+  console.log(error);
 });
 
 // start the crawler
