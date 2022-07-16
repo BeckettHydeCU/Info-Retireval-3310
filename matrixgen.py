@@ -11,7 +11,7 @@ from nltk.corpus import stopwords
 
 from collections import Counter
 
-filename = "search_spider/toy-data.json"
+filename = "search_spider/text-data.json"
 
 stopWords = set(stopwords.words('english'))
 
@@ -69,7 +69,7 @@ M = np.transpose(np.array(matrixArray))
 
 print(M)
 
-np.savetxt('m.txt', M, fmt="%d")
+np.savetxt('pre-svd.txt', M, fmt="%d")
 
 # M1 = np.loadtxt('m.txt', dtype=int)
 
