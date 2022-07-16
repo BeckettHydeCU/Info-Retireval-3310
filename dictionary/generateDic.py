@@ -4,6 +4,7 @@ import numpy
 
 #nltk imports
 nltk.data.path.append("/home/gigabyte/Desktop/matrixMethods/project/Info-Retireval-3310/nltk")
+nltk.data.path.append("/home/becketth/3310/Info-Retireval-3310/nltk")
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 
@@ -12,7 +13,7 @@ from nltk.corpus import stopwords
 stopWords = set(stopwords.words('english'))
 
 #get the data and create dictionary
-filename = "text-data-mfwebsite.json"
+filename = "toy-data.json"
 wordsFiltered = [] #holds the list of terms for document matrix
 
 with open(filename, "r") as file:
