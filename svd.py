@@ -68,6 +68,9 @@ print("Shape rankAppx: " + str(np.shape(rankAppx)))
 print(rankAppx)
 
 np.savetxt('rank-appx.txt', rankAppx)
+np.savetxt('U-appx.txt', U)
+np.savetxt('D-appx.txt', D)
+np.savetxt('Vt-appx.txt', V_t)
 
 
 
