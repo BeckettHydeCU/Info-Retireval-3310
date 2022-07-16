@@ -10,25 +10,48 @@ V_t = np.loadtxt('Vt-appx.txt')
 
 rankAppx = np.loadtxt('rank-appx.txt')
 
+# def slowquery(query):
+
+#     similarities = []
+
+#     for col in range(rankAppx.shape[1]):
+        
+
+#         e = np.zeros(rankAppx.shape[1])
+#         e[col] = 1
+#         e = np.transpose([e])
+
+#         abye = np.matmul(rankAppx, e)
+#         num = np.matmul(np.transpose(abye), query)
+#         denom = np.linalg.norm(abye, ord=2) * np.linalg.norm(query, ord=2)
+        
+#         costheta = num / denom
+
+#         similarities.append(costheta[0])
+
+
+#     return similarities
+
+
 def query(query):
 
     similarities = []
 
     for col in range(rankAppx.shape[1]):
-        
-
         e = np.zeros(rankAppx.shape[1])
         e[col] = 1
         e = np.transpose([e])
 
-        abye = np.matmul(rankAppx, e)
-        num = np.matmul(np.transpose(abye), query)
-        denom = np.linalg.norm(abye, ord=2) * np.linalg.norm(query, ord=2)
-        
-        costheta = num / denom
+        V = np.transpose(V_t)
 
-        similarities.append(costheta)
+        U_t = np.transpose(U)
 
+        num = np.matmul(np.matmul(np.matmul(np.transpose(e), V), D), np.matmul(U_t, query))
+        denom = np.linalg.norm(np.matmul(np.matmul(D, V_t), e), ord=2) * np.linalg.norm(query, ord=2)
+
+        costheta = num/denom
+
+        similarities.append(costheta[0])
 
     return similarities
 
