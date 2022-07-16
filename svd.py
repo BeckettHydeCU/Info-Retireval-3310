@@ -1,5 +1,6 @@
+from __future__ import print_function
 import json
-import numpy
+import numpy as np
 from collections import Counter
 
 filename = "search_spider/toy-data.json"
@@ -17,6 +18,7 @@ with open(filename, "r") as file:
         for string in document["texts"]:
             worddict = Counter(worddict) + Counter(string.split())
         worddict = dict(worddict)
+        print(worddict)
 
         column = []
 
@@ -30,11 +32,25 @@ with open(filename, "r") as file:
 
         for uncaughtkey in worddict:
             words.append(uncaughtkey)
-            column.append(words[uncaughtkey])
+            column.append(worddict[uncaughtkey])
         
+
         matrixArray.append(column)
+print(matrixArray)
+
+for doc in matrixArray:
+    d = (len(words) - len(doc))
+    if (d > 0):
+        for i in range(d):
+            doc.append(0)
 
 print(matrixArray)
 
+print("+++++++++==")
+M = np.array(matrixArray)
+
+print(np.transpose(M))
+
+print_function
     
     
