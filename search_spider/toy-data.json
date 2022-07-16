@@ -1,0 +1,41 @@
+{"data":[
+    {
+        "url": "https://www.example.com/page1",
+        "texts": [
+            "The quick brown fox jumped over the lazy dog.",
+            "The dog was a security guard, and the fox was a thief.",
+            "The dog lost his job the next day."
+        ]
+    },
+    {
+        "url": "https://www.example.com/page2",
+        "texts": [
+            "Foxes are mammals, often the size of housecats or slightly larger.",
+            "They are quick and often seen as cunning.",
+            "The show Dora includes a fox who is a thief"
+        ]
+    },
+    {
+        "url": "https://www.example.com/page3",
+        "texts": [
+            "Dogs come in a variety of breeds and can be small or large.",
+            "Dogs vary in temperament. They can be energetic or lazy."
+        ]
+    },
+    {
+        "url": "https://www.example.com/page4",
+        "texts": [
+            "Dogs and cats living together often does not go well.",
+            "They can often fight and have different temperaments.",
+            "Although sometimes it works out."
+        ]
+    },
+    {
+        "url": "https://www.example.com/page5",
+        "texts": [
+            "It is very bad to commit tax evasion, because it makes you an enemy of the state.",
+            "Don't try and be cunning and avoid the tax man.",
+            "They are quick and will catch you."
+        ]
+    }
+]}
