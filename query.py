@@ -3,6 +3,16 @@ import numpy as np
 query1 = np.transpose([1, 0, 1, 0, 0, 0])
 query2 = np.transpose([1, 0, 0, 0, 0, 0])
 
+documents = np.loadtxt('documents.txt', dtype=str, delimiter="\n")
+words = np.loadtxt('words.txt', dtype=str, delimiter="\n")
+
+print(documents)
+print(words)
+
+qtext1 = "bake bread"
+qtext2 = "bake"
+    
+
 
 U = np.loadtxt('U-appx.txt')
 D = np.loadtxt('D-appx.txt')
@@ -33,7 +43,19 @@ rankAppx = np.loadtxt('rank-appx.txt')
 #     return similarities
 
 
-def query(query):
+def query(querytext):
+
+    query = []
+
+    s = querytext.split()
+    for i in range(len(words)):
+        if words[i] in s:
+            query.append(1)
+        else:
+            query.append(0)
+    
+    query = np.transpose(query)
+    print(query)
 
     similarities = []
 
@@ -55,4 +77,4 @@ def query(query):
 
     return similarities
 
-print(query(query2))
+print(query("bake"))

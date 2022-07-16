@@ -56,6 +56,9 @@ with open(filename, "r") as file:
         matrixArray.append(column)
 # print(matrixArray)
 
+np.savetxt("documents.txt", documents, delimiter =", ", fmt ="% s")
+np.savetxt("words.txt", words, delimiter=", ", fmt="% s")
+
 for doc in matrixArray:
     d = (len(words) - len(doc))
     if (d > 0):
@@ -70,6 +73,7 @@ M = np.transpose(np.array(matrixArray))
 print(M)
 
 np.savetxt('pre-svd.txt', M, fmt="%d")
+
 
 # M1 = np.loadtxt('m.txt', dtype=int)
 
