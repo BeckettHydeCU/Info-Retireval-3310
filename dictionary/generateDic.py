@@ -1,5 +1,4 @@
 import nltk
-import xml.etree.ElementTree as ET
 
 #nltk imports
 nltk.data.path.append("/home/gigabyte/Desktop/matrixMethods/project/Info-Retireval-3310/nltk")
