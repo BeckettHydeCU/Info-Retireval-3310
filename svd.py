@@ -36,7 +36,7 @@ with open(filename, "r") as file:
                 else:
                     doc_words[w] += 1
 
-        print(doc_words)
+        # print(doc_words)
 
         column = []
 
@@ -54,7 +54,7 @@ with open(filename, "r") as file:
         
 
         matrixArray.append(column)
-print(matrixArray)
+# print(matrixArray)
 
 for doc in matrixArray:
     d = (len(words) - len(doc))
@@ -62,13 +62,18 @@ for doc in matrixArray:
         for i in range(d):
             doc.append(0)
 
-print(matrixArray)
+# print(matrixArray)
 
 print("+++++++++==")
-M = np.array(matrixArray)
+M = np.transpose(np.array(matrixArray))
 
-print(np.transpose(M))
+print(M)
 
-print_function
+np.savetxt('m.txt', M, fmt="%d")
+
+# M1 = np.loadtxt('m.txt', dtype=int)
+
+# print(M1)
+
     
     
