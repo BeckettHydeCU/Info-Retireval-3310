@@ -82,7 +82,10 @@ def query(querytext):
         num = np.matmul(np.matmul(np.matmul(np.transpose(e), V), D), np.matmul(U_t, query))
         denom = np.linalg.norm(np.matmul(np.matmul(D, V_t), e), ord=2) * np.linalg.norm(query, ord=2)
 
-        costheta = num/denom
+        if denom == 0:
+            costheta = [-1]
+        else:
+            costheta = num/denom
 
         similarities.append(costheta[0])
 

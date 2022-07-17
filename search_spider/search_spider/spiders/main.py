@@ -28,20 +28,27 @@ class SearchSpider(scrapy.Spider):
                 start_urls.append(child.text)
         print("Parsing complete.")
 
-        start_urls = ['https://www.motherfuckingwebsite.com/']
+        # start_urls = ['https://www.motherfuckingwebsite.com/']
+        i = 0
         for url in start_urls:
-            yield scrapy.Request(url=url, callback=self.parse, meta={'url': url})
+            i += 1
+            yield scrapy.Request(url=url, callback=self.parse, meta={'url': url, 'i': i})
 
     def parse(self, response):
-        # self.log('////////////')
+        self.log("I : " + str(response.meta.get('i')))
+        ignore_tags = ['.menu-icon-text']
         req_tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'strong']
         section_selector = response.css('body')
         for section in section_selector:
             texts = []
             for tag in section.css('*'):
+                if tag.root.tag in ignore_tags:
+                    tag.root.getparent().remove(tag.root)
+            for tag in section.css('*'):
                 if tag.root.tag in req_tags:
                     texts = texts + tag.css('*::text').getall()
             write_json({"url": response.meta.get('url'), "texts": texts})
+            
             self.log("logged")
 
         # page = response.url.split("/")[-2]
