@@ -7,8 +7,8 @@ stemmer = stem.PorterStemmer()
 query1 = np.transpose([1, 0, 1, 0, 0, 0])
 query2 = np.transpose([1, 0, 0, 0, 0, 0])
 
-documents = np.loadtxt('documents.txt', dtype=str, delimiter="\n")
-words = np.loadtxt('words.txt', dtype=str, delimiter="\n")
+documents = np.loadtxt('documents.txt', dtype=str)
+words = np.loadtxt('words.txt', dtype=str)
 
 # print(documents)
 # print(words)
@@ -104,5 +104,7 @@ results = sorted(results, key = lambda x: x[1])
 
 for result in results:
     print(str(result[0]) + " :: " + str(result[1]))
+
+np.savetxt("results.txt", results, delimiter=", ", fmt="% s")
 
 
