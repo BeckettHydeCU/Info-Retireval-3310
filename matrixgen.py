@@ -12,7 +12,7 @@ import nltk.stem as stem
 
 from collections import Counter
 
-filename = "search_spider/paper-data.json"
+filename = "search_spider/text-data.json"
 
 stopWords = set(stopwords.words('english'))
 
@@ -59,8 +59,12 @@ with open(filename, "r") as file:
         norm = np.linalg.norm(column, ord=2)
         normed_col = []
         for c in column:
-            normed_col.append(c/norm)
-        # print(normed_col)
+            if norm == 0:
+                normed_col.append(0)
+            else:
+                normed_col.append(c/norm)
+
+        
         matrixArray.append(normed_col)
 # print(matrixArray)
 

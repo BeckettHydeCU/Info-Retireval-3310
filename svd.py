@@ -9,10 +9,12 @@ U, first_D, V_t = np.linalg.svd(A)
 
 print("Svd complete.")
 
-print("ShapeU: " + str(np.shape(U)) + " ShapeVt: " + str(np.shape(V_t)))
-
 D = np.zeros((U.shape[1], V_t.shape[0]))
 D[:first_D.size, :first_D.size] = np.diag(first_D)
+
+
+print("ShapeU: " + str(np.shape(U)) + "ShapeD: " + str(np.shape(D)) + " ShapeVt: " + str(np.shape(V_t)))
+
 # np.allclose
 
 # print(" ")
@@ -35,7 +37,7 @@ D[:first_D.size, :first_D.size] = np.diag(first_D)
 # print(" ")
 # print(" ")
 
-rank = 3
+rank = 235
 
 U = np.delete(U, slice(rank, U.shape[1]), axis=1)
 D = np.delete(D, slice(rank, D.shape[1]), axis=1)

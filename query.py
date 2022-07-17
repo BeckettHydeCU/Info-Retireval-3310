@@ -10,8 +10,8 @@ query2 = np.transpose([1, 0, 0, 0, 0, 0])
 documents = np.loadtxt('documents.txt', dtype=str, delimiter="\n")
 words = np.loadtxt('words.txt', dtype=str, delimiter="\n")
 
-print(documents)
-print(words)
+# print(documents)
+# print(words)
 
 qtext1 = "bake bread"
 qtext2 = "bake"
@@ -54,10 +54,9 @@ def query(querytext):
     s = querytext.split()
     stemmed = []
     for ss in s:
-        stemmed.append(stemmer.stem(ss))
+        stemmed.append(stemmer.stem(ss.lower()))
 
-    print(stemmed)
-    print(s)
+    # print(stemmed)
 
     for i in range(len(words)):
         if words[i] in stemmed:
@@ -67,7 +66,7 @@ def query(querytext):
     
     query = np.transpose(query)
     # query = np.transpose([1,0,1,0,0,0])
-    print(query)
+    # print(query)
 
     similarities = []
 
@@ -89,4 +88,18 @@ def query(querytext):
 
     return similarities
 
-print(query("bake"))
+resp = query("washington post published article innovator musician castle of our skins")
+
+results = []
+i = 0
+for res in resp:
+    if res > .1:
+        results.append((res, documents[i]))
+    i += 1
+
+results = sorted(results, key = lambda x: x[1])
+
+for result in results:
+    print(str(result[0]) + " :: " + str(result[1]))
+
+
