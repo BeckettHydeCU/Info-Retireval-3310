@@ -1,6 +1,6 @@
 import numpy as np
 
-A = np.loadtxt('m_testpaper.txt', dtype=float)
+A = np.loadtxt('pre-svd.txt', dtype=float)
 
 print("Loaded matrix.")
 # print(A)

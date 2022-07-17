@@ -1,5 +1,9 @@
 import numpy as np
 
+import nltk.stem as stem
+
+stemmer = stem.PorterStemmer()
+
 query1 = np.transpose([1, 0, 1, 0, 0, 0])
 query2 = np.transpose([1, 0, 0, 0, 0, 0])
 
@@ -48,13 +52,21 @@ def query(querytext):
     query = []
 
     s = querytext.split()
+    stemmed = []
+    for ss in s:
+        stemmed.append(stemmer.stem(ss))
+
+    print(stemmed)
+    print(s)
+
     for i in range(len(words)):
-        if words[i] in s:
+        if words[i] in stemmed:
             query.append(1)
         else:
             query.append(0)
     
     query = np.transpose(query)
+    # query = np.transpose([1,0,1,0,0,0])
     print(query)
 
     similarities = []

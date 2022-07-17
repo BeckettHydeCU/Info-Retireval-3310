@@ -8,12 +8,15 @@ nltk.data.path.append("/home/gigabyte/Desktop/matrixMethods/project/Info-Retirev
 nltk.data.path.append("/home/becketth/3310/Info-Retireval-3310/nltk")
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
+import nltk.stem as stem
 
 from collections import Counter
 
-filename = "search_spider/text-data.json"
+filename = "search_spider/paper-data.json"
 
 stopWords = set(stopwords.words('english'))
+
+stemmer = stem.PorterStemmer()
 
 documents = [] # holds list of document urls, index corresponds to doc's col
 words = [] # holds list of words, index corresponds to word's row
@@ -27,8 +30,9 @@ with open(filename, "r") as file:
 
         doc_words = {}
 
-        doc_raw = word_tokenize(" ".join(document["texts"]))
+        doc_raw = word_tokenize(" ".join(document["texts"]).lower())
         for w in doc_raw:
+            w = stemmer.stem(w)
             if w not in stopWords:
                 if w not in doc_words:
                     if w.isalpha()==True:
@@ -52,8 +56,12 @@ with open(filename, "r") as file:
             words.append(uncaughtkey)
             column.append(doc_words[uncaughtkey])
         
-
-        matrixArray.append(column)
+        norm = np.linalg.norm(column, ord=2)
+        normed_col = []
+        for c in column:
+            normed_col.append(c/norm)
+        # print(normed_col)
+        matrixArray.append(normed_col)
 # print(matrixArray)
 
 np.savetxt("documents.txt", documents, delimiter =", ", fmt ="% s")
@@ -72,7 +80,7 @@ M = np.transpose(np.array(matrixArray))
 
 print(M)
 
-np.savetxt('pre-svd.txt', M, fmt="%d")
+np.savetxt('pre-svd.txt', M)
 
 
 # M1 = np.loadtxt('m.txt', dtype=int)
