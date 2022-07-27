@@ -1,7 +1,8 @@
 # Information Retrieval Code Repo for Matrix Methods
 We scrape CU Boulder's website and implement a vector space model for intersite queries.
 
-See the [paper](https://github.com:FerntheFlerm2/search_engine_appm_3310) for the full writeup with mathematical explanation, code discussion, and examples.
+See the [paper](https://github.com/FerntheFlerm2/search_engine_appm_3310) for the full writeup with mathematical explanation, code discussion, and examples.
+
 
 Project by [FerntheFlerm2](https://github.com/FerntheFlerm2) and [BeckettHydeCU](https://github.com/BeckettHydeCU)
 
