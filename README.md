@@ -1,15 +1,15 @@
-#Information Retrieval Code Repo for Matrix Methods
+# Information Retrieval Code Repo for Matrix Methods
 We scrape CU Boulder's website and implement a vector space model for intersite queries.
-
-Project by [FerntheFlerm2](https://github.com/FerntheFlerm2) and [BeckettHydeCU](https://github.com/BeckettHydeCU)
 
 See the [paper](https://github.com:FerntheFlerm2/search_engine_appm_3310) for the full writeup with mathematical explanation, code discussion, and examples.
 
-#Overview:
+Project by [FerntheFlerm2](https://github.com/FerntheFlerm2) and [BeckettHydeCU](https://github.com/BeckettHydeCU)
+
+# Overview:
 Note this is very high level with implementation details which help
 for performance left out, the paper is a better reference.
 
-###Sitemap Generation
+### Sitemap Generation
 First we use sitemap-generator (node.js package) to generate
 a sitemap of links to pages on the CU website by crawling four layers deep from the
 homepage www.colorado.edu. See `sitemapGenerator.js`
@@ -17,7 +17,7 @@ homepage www.colorado.edu. See `sitemapGenerator.js`
 ###Text Data Gathering
 Then we use scrapy to save the links and their corresponding text in a JSON file. See `./search_spider/spiders/main.py`
 
-###Term-Document Matrix Generation
+### Term-Document Matrix Generation
 For each document we:
 
 1. Scan the document and record the frequency of every word that appears.
@@ -39,10 +39,10 @@ use a rank approximation. To do this we need to pick an appropriate rank
 to ensure we do not lose too much information. Thus, we compute the ratio of the difference in size between the datbase matrix's singular value decompositon (SVD) and the approximation, using the Frobenius norm, reducing the rank used until the ratio becomes too high.  See `frobenius.py`
 
 
-###Rank-k Matrix Approximation
+### Rank-k Matrix Approximation
 Next we generate the approximation using the SVD of the full matrix. See `svd.py`
 
-###Querying
+### Querying
 Finally we generate results for a given query. To do this we stem, filter, and lower case the query. Then, we generate a query vector in the manner described above, and calculate the cosine of the angle between the vector and each document. The documents corresponding to the top 10 largest cosines (meaning the most similar vectors) are returned. See `query.py`
 
 
