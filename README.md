@@ -22,7 +22,7 @@ Then we use scrapy to save the links and their corresponding text in a JSON file
 For each document we:
 
 1. Scan the document and record the frequency of every word that appears.
-In this process we stem (convert words to their most generate form i.e. "baking" -> "bake"), filter out common words, and lowercase all words using the nltk library in python. 
+In this process we stem (convert words to their most generic form i.e. "baking" -> "bake"), filter out common words, and lowercase all words using the nltk library in python. 
 
 2. Generate a vector for the document by going through the global dictionary, and if the term is present in the document the frequency of the term is appended to the corresponding component, and if that term is not, a zero is appended.
 
