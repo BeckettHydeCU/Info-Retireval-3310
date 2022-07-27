@@ -14,7 +14,7 @@ First we use sitemap-generator (node.js package) to generate
 a sitemap of links to pages on the CU website by crawling four layers deep from the
 homepage www.colorado.edu. See `sitemapGenerator.js`
 
-###Text Data Gathering
+### Text Data Gathering
 Then we use scrapy to save the links and their corresponding text in a JSON file. See `./search_spider/spiders/main.py`
 
 ### Term-Document Matrix Generation
@@ -33,7 +33,7 @@ We append zeroes to make all vectors to make then match the size of the final do
 See `matrixgen.py`
 
 
-###Rank Choice Generation
+### Rank Choice Generation
 As it would be too computationally intensive to use the entire matrix for querying, we must
 use a rank approximation. To do this we need to pick an appropriate rank
 to ensure we do not lose too much information. Thus, we compute the ratio of the difference in size between the datbase matrix's singular value decompositon (SVD) and the approximation, using the Frobenius norm, reducing the rank used until the ratio becomes too high.  See `frobenius.py`
